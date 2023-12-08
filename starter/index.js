@@ -87,6 +87,7 @@ var finances = [
   ["Feb-2017", 671099],
 ];
 
+/*
 // Calculate number of months
 
 console.log(`******* number of months *******`);
@@ -152,3 +153,73 @@ console.log(totalChange);
 let averageChange = totalChange / (numberMonths - 1);
 
 console.log(averageChange);
+
+console.log(`***** Calculate biggest monthly change (+ or -v) ****`)
+
+*/
+
+// Create monthly change array for looping comparison to work out largest change
+// This tells me the changes each month
+
+var specifiedMonthChange = [];
+
+for (i = 1; i <= finances.length - 1; i++) {
+  specifiedMonthChange[i - 1] = [
+    finances[i][i - i],
+    finances[i][1] - finances[i - 1][1],
+  ];
+}
+console.log(specifiedMonthChange);
+
+// Now we need to loop through to detemine the largest
+// Find the biggest change
+
+var maxChangePostiveMonth = 0;
+var maxMonth;
+
+for (i = 0; i <= specifiedMonthChange.length - 1; i++) {
+  if (
+    specifiedMonthChange[i][1] > 1 &&
+    specifiedMonthChange[i][1] > maxChangePostiveMonth
+  ) {
+    maxChangePostiveMonth = specifiedMonthChange[i][1];
+    maxMonth = specifiedMonthChange[i][0];
+  }
+
+  /*
+  if (specifiedMonthChange[i][1] > specifiedMonthChange[i - 1][1]) {
+    maxChangePostiveAmt = specifiedMonthChange[i][1];
+    maxChangePostiveMonth = specifiedMonthChange[i][0];
+  }*/
+}
+
+console.log(maxChangePostiveMonth, maxMonth);
+
+/*
+  ["Jan-2010", 867884],
+  ["Feb-2010", 984655],
+  ["Mar-2010", 322013],
+  ["Apr-2010", -69417],
+
+*/
+
+var maxChangeLossMonth = 0;
+var maxlossMonth;
+
+for (i = 0; i <= 83; i++) {
+  if (
+    specifiedMonthChange[i][1] < 1 &&
+    specifiedMonthChange[i][1] < maxChangePostiveMonth
+  ) {
+    maxChangePostiveMonth = specifiedMonthChange[i][1];
+    maxMonth = specifiedMonthChange[i][0];
+  }
+
+  /*
+  if (specifiedMonthChange[i][1] > specifiedMonthChange[i - 1][1]) {
+    maxChangePostiveAmt = specifiedMonthChange[i][1];
+    maxChangePostiveMonth = specifiedMonthChange[i][0];
+  }*/
+}
+
+console.log(maxChangePostiveMonth, maxMonth);

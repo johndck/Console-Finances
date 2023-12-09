@@ -106,3 +106,31 @@ for (i = 0; i < finances.length; i++) {
   netProfit += profit;
 }
 console.log(`Net total amount is: $${netProfit}`);
+
+// The average of the **changes** in Profit/Losses over the entire period.
+
+// console.log(`********* Monthly Change Numbers ********`);
+
+// You will need to track what the total change in Profit/Losses are from month to month and then find the average.
+
+/*
+ ["Jan-2010", 867884],
+  ["Feb-2010", 984655],
+  ["Mar-2010", 322013],
+  ["Apr-2010", -69417],
+*/
+
+var monthlyChange = 0;
+var totalChange = 0;
+for (i = 0; i < finances.length - 1; i++) {
+  monthlyChange = finances[i + 1][1] - finances[i][1];
+  totalChange += monthlyChange;
+}
+console.log(`total change: ${totalChange}`);
+let averageChange = Math.floor((totalChange / (numberMonths - 1)) * 100) / 100;
+console.log(`Average change: ${averageChange}`);
+
+/* var finances = 
+
+
+*/

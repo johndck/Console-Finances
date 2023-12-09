@@ -97,58 +97,12 @@ console.log(numberMonths);
 // Net total profit and loss
 
 console.log(`******* net profit & loss *******`);
-
-let financeNumbers = [];
+var profit = 0;
+// this sets the revenue number
+var netProfit = 0;
+// this sets the revenue counter
 for (i = 0; i < finances.length; i++) {
-  financeNumbers[i] = finances[i][1];
+  profit = finances[i][1];
+  netProfit += profit;
 }
-console.log(`No of monthly amounts identified: ${financeNumbers.length}`);
-
-console.log(`********* here is the array of numbers ********`);
-
-console.log(financeNumbers);
-
-// Calculate the net position //
-
-console.log(`********* This is the net position ********`);
-
-let totalProfitNumbers = 0;
-let totalLoss = 0;
-
-for (i = 0; i < financeNumbers.length; i++) {
-  const calcNumber = financeNumbers[i];
-  if (calcNumber > 1) {
-    totalProfitNumbers += calcNumber;
-  } else {
-    totalLoss += calcNumber * -1;
-  }
-}
-console.log(`********* Here are the totals ********`);
-
-console.log(`********* Profit numbers  ********`);
-console.log(totalProfitNumbers);
-
-console.log(`********* Loss numbers ********`);
-console.log(totalLoss);
-
-let netPosition = totalProfitNumbers - totalLoss;
-console.log(`********* net position ********`);
-console.log(netPosition);
-
-console.log(`********* Monthly Change Numbers ********`);
-
-let monthlyChange = [];
-for (i = 0; i < financeNumbers.length - 1; i++) {
-  monthlyChange[i] = financeNumbers[i + 1] - financeNumbers[i];
-}
-console.log(monthlyChange);
-
-let totalChange = 0;
-for (i = 0; i < monthlyChange.length; i++) {
-  totalChange += monthlyChange[i];
-}
-console.log(totalChange);
-
-let averageChange = totalChange / (numberMonths - 1);
-
-console.log(averageChange);
+console.log(`Net total amount is: $${netProfit}`);

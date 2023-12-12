@@ -1,3 +1,5 @@
+// This was my first attempt //
+
 var finances = [
   ["Jan-2010", 867884],
   ["Feb-2010", 984655],

@@ -87,12 +87,12 @@ var finances = [
   ["Feb-2017", 671099],
 ];
 
-// Calculate number of months
+console.log(`==== Financial Analysis ====`);
 
 console.log(`******* number of months *******`);
 
 var numberMonths = finances.length;
-console.log(numberMonths);
+console.log(`Total months: ${numberMonths}`);
 
 // Net total profit and loss
 
@@ -107,18 +107,7 @@ for (i = 0; i < finances.length; i++) {
 }
 console.log(`Net total amount is: $${netProfit}`);
 
-// The average of the **changes** in Profit/Losses over the entire period.
-
-// console.log(`********* Monthly Change Numbers ********`);
-
-// You will need to track what the total change in Profit/Losses are from month to month and then find the average.
-
-/*
- ["Jan-2010", 867884],
-  ["Feb-2010", 984655],
-  ["Mar-2010", 322013],
-  ["Apr-2010", -69417],
-*/
+console.log(`********* Monthly Change Numbers ********`);
 
 var monthlyChange = 0;
 var totalChange = 0;
@@ -126,11 +115,30 @@ for (i = 0; i < finances.length - 1; i++) {
   monthlyChange = finances[i + 1][1] - finances[i][1];
   totalChange += monthlyChange;
 }
-console.log(`total change: ${totalChange}`);
 let averageChange = Math.floor((totalChange / (numberMonths - 1)) * 100) / 100;
 console.log(`Average change: ${averageChange}`);
 
-/* var finances = 
+// Greatest increase in profit over the period
 
+var revenueChange = 0;
+var positiveMonthlychange = 0;
+var negativeMonthlychange = 0;
+var positiveMonth;
+var negativeMonth;
 
-*/
+for (let i = 1; i < finances.length; i++) {
+  revenueChange = finances[i][1] - finances[i - 1][1];
+  if (revenueChange > 0 && revenueChange > positiveMonthlychange) {
+    positiveMonthlychange = revenueChange;
+    positiveMonth = finances[i][0];
+  } else if (revenueChange < 0 && revenueChange < negativeMonthlychange) {
+    negativeMonthlychange = revenueChange;
+    negativeMonth = finances[i][0];
+  }
+}
+console.log(
+  `Greatest increase in Profits/Losses: ${positiveMonth} ($${positiveMonthlychange})`
+);
+console.log(
+  `Greatest decrease in Profits/Losses: ${negativeMonth} ($${negativeMonthlychange})`
+);
